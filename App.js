@@ -37,13 +37,18 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
+console.log("HOST:", process.env.MYSQLHOST);
+console.log("PORT:", process.env.MYSQLPORT);
+console.log("DB:", process.env.MYSQLDATABASE);
+console.log("USER:", process.env.MYSQLUSER);
+
 sequelize.authenticate()
   .then(() => console.log("Database connected..."))
   .catch(err => console.log("Error: " + err));
 
-sequelize.sync()
-  .then(() => console.log("Table created"))
-  .catch(err => console.log(err));
+// sequelize.sync()
+//   .then(() => console.log("Table created"))
+//   .catch(err => console.log(err));
 
 const PORT = process.env.PORT || 5000;
 
