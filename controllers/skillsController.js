@@ -52,6 +52,8 @@ export const addSkill = async (req, res) => {
       });
     }
 
+    console.log("USER ID:", req.user.id);
+
     const skill = await Skill.create({
 
       user_id: req.user.id,
