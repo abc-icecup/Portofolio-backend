@@ -17,11 +17,17 @@ const verifyToken = (req, res, next) => {
     // verifikasi token
     const verified = jwt.verify(token, process.env.JWT_SECRET);
 
+    // ===== DEBUG =====
+    console.log("===== JWT PAYLOAD =====");
+    console.log(verified);
+    console.log("=======================");
+    // =================
+
     // simpan data user ke request
     req.user = verified;
 
     next();
-    
+
   } catch (error) {
     res.status(403).json({
       message: "Token tidak valid",
